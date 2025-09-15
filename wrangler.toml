@@ -6,7 +6,7 @@ compatibility_date = "2025-09-15"
 [vars]
 # Plain variables (safe to view)
 R2_BUCKET = "acculynx-uploads"
-R2_ACCOUNT_ID = "<YOUR_CF_ACCOUNT_ID>"
+R2_ACCOUNT_ID = "5e4c0d3cdf4a2046bf1e710da5d19636"
 # Optional: set if you front R2 with a custom domain / CDN
 # R2_PUBLIC_BASE = "https://cdn.example.com"
 
