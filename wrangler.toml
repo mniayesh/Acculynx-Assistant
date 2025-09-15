@@ -1,0 +1,19 @@
+name = "accu-gateway"
+main = "gateway_worker_all_ops.js"
+# Use today's (or any recent) date so Workers runtime features are available
+compatibility_date = "2025-09-15"
+
+[vars]
+# Plain variables (safe to view)
+R2_BUCKET = "acculynx-uploads"
+R2_ACCOUNT_ID = "<YOUR_CF_ACCOUNT_ID>"
+# Optional: set if you front R2 with a custom domain / CDN
+# R2_PUBLIC_BASE = "https://cdn.example.com"
+
+# Secrets (set via CLI or Dashboard → Settings → Variables & Secrets)
+#   wrangler secret put GATEWAY_TOKEN
+#   wrangler secret put ACCULYNX_TOKEN
+#   wrangler secret put R2_ACCESS_KEY_ID
+#   wrangler secret put R2_SECRET_ACCESS_KEY
+# Optional per-user token routing (maps to actorUserId)
+#   wrangler secret put ACCULYNX_TOKEN__b47f2181-2191-4b14-82e5-335b23faa4d5
