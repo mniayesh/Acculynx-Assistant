@@ -8,7 +8,6 @@ A single Worker that:
 - Exposes **`GET /gateway/meta`** for discovery of supported operation names
 - Supports **multipart form**, **per-user token routing** (`actorUserId`), and **timeout overrides** (`timeoutMs`)
 
----
 
 ## Quick start
 
@@ -29,6 +28,22 @@ wrangler deploy
 
 The Worker requires only one secret (`ACCULYNX_TOKEN`). You may optionally define **per-user** tokens by adding secrets named
 `ACCULYNX_TOKEN__<actorUserId>`; when a request includes `actorUserId`, that token is used for the upstream call.
+
+---
+
+## Updating operations & OpenAPI
+
+The gateway routing table and OpenAPI definition are generated from a single source of truth: `data/operations.json`.
+
+1. Update `data/operations.json` with any new or removed AccuLynx operations.
+2. Regenerate the worker and spec:
+
+   ```bash
+   node scripts/generate.js
+   ```
+
+Both `gateway.worker.js` and `gateway.openapi.yaml` are overwritten by the script. Commit the regenerated files together with
+any changes to the operations data so the Worker and spec stay in sync.
 
 ---
 
@@ -114,4 +129,5 @@ curl -X POST "http://localhost:8787/gateway/raw?path=/api/v2/uploads/raw&method=
 ---
 
 ## OpenAPI
-See `gateway.all.openapi.oai31.updated.yaml` for a current spec aligned with this Worker.
+The generated specification lives in `gateway.openapi.yaml`. Regenerate it with `node scripts/generate.js` whenever the
+operation list changes.
