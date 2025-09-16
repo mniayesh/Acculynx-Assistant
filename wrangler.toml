@@ -1,5 +1,5 @@
 name = "accu-gateway"
-main = "gateway_worker_all_ops.js"
+main = "gateway.worker.js"
 # Use today's (or any recent) date so Workers runtime features are available
 compatibility_date = "2025-09-15"
 
